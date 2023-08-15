@@ -74,7 +74,7 @@ paths:
       description: For valid response try integer IDs with value <= 5 or > 10. Other values will generate exceptions.
       operationId: getOrderById
       parameters:
-        - name: orderId
+        - name: Id
           in: path
           description: ID of order that needs to be fetched
           required: true
@@ -98,11 +98,11 @@ paths:
     delete:
       tags:
         - student
-      summary: Delete student by ID
+      summary: Delete purchase order by ID
       description: For valid response try integer IDs with value < 1000. Anything above 1000 or nonintegers will generate API errors
       operationId: deleteOrder
       parameters:
-        - name: orderId
+        - name: Id
           in: path
           description: ID of the order that needs to be deleted
           required: true
@@ -144,7 +144,7 @@ components:
         message:
           type: string
       xml:
-        name: 'student'
+        name: '###default'
   requestBodies:
     Pet:
       description: Pet object that needs to be added to the store
