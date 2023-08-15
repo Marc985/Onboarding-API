@@ -25,12 +25,8 @@ externalDocs:
 servers:
   - url: https://petstore3.swagger.io/api/v3
 tags: 
+ 
   - name: student
-    description: Everything about student
-    externalDocs:
-      description: Find out more
-      url: http://swagger.io
-  - name: store
     description: Access to Petstore orders
     externalDocs:
       description: Find out more about our store
@@ -38,11 +34,10 @@ tags:
   - name: user
     description: Operations about user
 paths:
-
   /student:
     post:
       tags:
-        - store
+        - student
       summary: Place an order for a pet
       description: Place a new order in the store
       operationId: placeOrder
@@ -95,26 +90,6 @@ paths:
           description: Invalid ID supplied
         '404':
           description: Order not found
-    delete:
-      tags:
-        - student
-      summary: Delete purchase order by ID
-      description: For valid response try integer IDs with value < 1000. Anything above 1000 or nonintegers will generate API errors
-      operationId: deleteOrder
-      parameters:
-        - name: Id
-          in: path
-          description: ID of the order that needs to be deleted
-          required: true
-          schema:
-            type: integer
-            format: int64
-      responses:
-        '400':
-          description: Invalid ID supplied
-        '404':
-          description: Order not found
-  
 components:
   schemas:
     
