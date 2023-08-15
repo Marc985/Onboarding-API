@@ -64,7 +64,7 @@ paths:
   /student/{Id}:
     get:
       tags:
-        - store
+        - student
       summary: Find purchase order by ID
       description: For valid response try integer IDs with value <= 5 or > 10. Other values will generate exceptions.
       operationId: getOrderById
