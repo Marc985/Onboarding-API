@@ -1,0 +1,342 @@
+openapi: 3.0.3
+info:
+  title: Onboarding
+  description: |-
+    this is an API specification about student and teacher
+  
+  version: 1.0.1
+
+servers:
+  - url: https://STD22095/api
+
+
+paths:
+  /student:
+    put:
+      tags:
+        - student
+      summary: update an exisiting student
+      operationId: update Student
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Student'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Student'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Student'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Student'          
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Student'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Student not found
+        '405':
+          description: Validation exception
+  
+    post:
+      tags:
+        - student
+      summary: add new student
+      operationId: add student
+      requestBody:
+        description: add student
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Student'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Student'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Student'
+        required: true
+      responses:
+        '200':
+          description: added succefully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Student'          
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Student'
+        '405':
+          description: Invalid input
+  
+    get:
+      tags:
+        - student
+      summary: find all student
+      operationId: find  student
+      responses:
+        '200':
+          description: succesful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Student'          
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Student'
+        '405':
+          description: Invalid input
+  
+
+  /student/{studentId}:
+    get:
+      tags:
+        - student
+      summary: Find student by ID
+      description: Returns a student
+      operationId: getstudentById
+      parameters:
+        - name: studentId
+          in: path
+          description: id of student to find
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Student'          
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Student'
+        '400':
+          description: Invalid ID of student
+        '404':
+          description: student not found
+    delete:
+      tags:
+        - student
+      summary: Deletes a student
+      description: delete student
+      operationId: delete student
+      parameters:
+        
+        - name: studentId
+          in: path
+          description: id of student to delete
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '400':
+          description: Invalid id student value
+  /teacher:
+    put:
+      tags:
+        - teacher
+      summary: update an exisiting teacher
+      operationId: update teacher
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Teacher'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Teacher'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Teacher'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Teacher'          
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Teacher'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Student not found
+        '405':
+          description: Validation exception
+  
+    post:
+      tags:
+        - teacher
+      summary: add new teacher
+      operationId: add teacher
+      requestBody:
+        description: add teacher
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Teacher'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Teacher'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Teacher'
+        required: true
+      responses:
+        '200':
+          description: added succefully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Teacher'          
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Teacher'
+        '405':
+          description: Invalid input
+  
+    get:
+      tags:
+        - teacher
+      summary: find all teacher
+      operationId: find  teacher
+      responses:
+        '200':
+          description: find succefully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Teacher'          
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Teacher'
+        '405':
+          description: Invalid input
+  
+
+  /teacher/{teacherId}:
+    get:
+      tags:
+        - teacher
+      summary: Find teacher by id
+      description: Returns a teacher
+      operationId: getteacherById
+      parameters:
+        - name: teacherId
+          in: path
+          description: id of teacher to find
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Teacher'          
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Teacher'
+        '400':
+          description: Invalid ID of teacher
+        '404':
+          description: teacher not found
+    delete:
+      tags:
+        - teacher
+      summary: Deletes a teacher
+      description: delete teacher
+      operationId: delete teacher
+      parameters:
+        
+        - name: teacherId
+          in: path
+          description: id of student to delete
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '400':
+          description: Invalid id teacher value
+components:
+  schemas:
+
+    Student:
+      required:
+        - firstname
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 10
+        firstname:
+          type: string
+          example: Marc
+        lastname:
+          type: string
+          example: Herilala
+        email:
+          type: string
+          example: marc@gmail.com
+        birthdate: 
+          type: string
+          example: 17-05-2004
+      xml:
+        name: student
+    Teacher:
+      required:
+        - firstname
+        - lastname
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 2
+        firstname:
+          type: string
+          example: Tokimahery
+        lastname:
+          type: string
+          example: RAMAROZAKA
+        Courses:
+          $ref: '#/components/schemas/Courses'
+      xml:
+        name: teacher
+    Courses:
+      type: object
+      properties:
+        id: 
+          type: integer
+          format: int64
+          example: 18
+        name: 
+          type: string
+          example: programmation orienté objet
+        code:
+          type: string 
+          example: PROG2
+        duration of course: 
+          type: string
+          example: 20H
+      xml:
+        name: courses
+   
